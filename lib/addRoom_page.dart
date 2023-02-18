@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AddRoomPage extends StatefulWidget {
-  AddRoomPage();
+  const AddRoomPage({Key? key}) : super(key: key);
 
   @override
   _AddPostPageState createState() => _AddPostPageState();

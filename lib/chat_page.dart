@@ -3,9 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutter_demo_firebase/userState.dart';
 import 'package:flutterfire_ui/auth.dart';
-import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
@@ -19,7 +17,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   String randomId = Uuid().v4();
-  // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
+  final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
   void initState() {
     getData();
@@ -31,6 +29,7 @@ class _ChatPageState extends State<ChatPage> {
         .collection('chat_room')
         .doc(widget.name)
         .collection('contents')
+        .orderBy("createdAt", descending: true)
         .get();
 
     final message = getData.docs
@@ -81,9 +80,9 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     // ユーザー情報を受け取る
-    final UserState userState = Provider.of<UserState>(context);
-    final User user = userState.user!;
-    final _uid = types.User(id: user.uid, firstName: user.email);
+    // final UserState userState = Provider.of<UserState>(context);
+    final User? user = FirebaseAuth.instance.currentUser;
+    final _uid = types.User(id: user!.uid, firstName: user.email);
 
     return Scaffold(
       appBar: AppBar(
