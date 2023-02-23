@@ -68,11 +68,11 @@ class _ChatPageState extends State<ChatPage> {
     types.PreviewData previewData,
   ) {
     final index = _messages.indexWhere((element) => element.id == message.id);
-    final updatedMessage = _messages[index].copyWith(previewData: previewData);
+    // final updatedMessage = _messages[index].copyWith(previewData: previewData);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
-        _messages[index] = updatedMessage;
+        // _messages[index] = updatedMessage;
       });
     });
   }

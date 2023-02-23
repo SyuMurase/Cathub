@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo_firebase/roomList_page.dart';
+import 'package:flutter_demo_firebase/screen/roomList_page.dart';
 import 'package:flutterfire_ui/auth.dart';
 
 class AuthGate extends StatelessWidget {
@@ -16,16 +16,16 @@ class AuthGate extends StatelessWidget {
         // User is not signed in
         if (!snapshot.hasData) {
           return SignInScreen(
-            headerBuilder: (context, constraints, _) {
-              return Padding(
-                padding: const EdgeInsets.all(20),
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Image.network(
-                      'https://firebase.flutter.dev/img/flutterfire_300x.png'),
-                ),
-              );
-            },
+            // headerBuilder: (context, constraints, _) {
+            //   return Padding(
+            //     padding: const EdgeInsets.all(20),
+            //     child: AspectRatio(
+            //       aspectRatio: 1,
+            //       child: Image.network(
+            //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
+            //     ),
+            //   );
+            // },
             footerBuilder: (context, _) {
               return const Padding(
                 padding: EdgeInsets.only(top: 16),

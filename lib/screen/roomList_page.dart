@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_demo_firebase/input_text_history_page.dart';
-import 'package:flutter_demo_firebase/search_bar.dart';
-import 'package:flutter_demo_firebase/typeahead_page.dart';
+import 'package:flutter_demo_firebase/screen/make_idea_screen.dart';
+import 'package:flutter_demo_firebase/screen/sample.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutterfire_ui/auth.dart';
-import 'package:flutter_demo_firebase/addRoom_page.dart';
-import 'package:flutter_demo_firebase/chat_page.dart';
+
+import 'addRoom_page.dart';
+import 'chat_page.dart';
 
 class RoomListPage extends HookWidget {
   const RoomListPage({Key? key}) : super(key: key);
@@ -28,79 +28,87 @@ class RoomListPage extends HookWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
-            onPressed: () async {
-              await FirebaseAuth.instance.signOut();
-              await FlutterFireUIAuth.signOut(context: context);
-              await Navigator.of(context)
-                  .pushReplacement(MaterialPageRoute(builder: (context) {
-                return SignInScreen();
-              }));
+            // onPressed: () async {
+            //   await FirebaseAuth.instance.signOut();
+            //   await FlutterFireUIAuth.signOut(context: context);
+            //   await Navigator.of(context)
+            //       .pushReplacement(MaterialPageRoute(builder: (context) {
+            //     return SignInScreen();
+            //   }));
+            // },
+            // onPressed: () {
+            //   Navigator.push(context,
+            //       MaterialPageRoute(builder: (context) => MakeIdeaScreen()));
+            // },
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => SampleScreen()));
             },
           )
         ],
       ),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.all(8),
-            child: Text('ログイン情報:${user.value!.email}'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              final data = {
-                "uid": user.value!.uid,
-                "createdAt": Timestamp.now(),
-              };
-              await FirebaseFirestore.instance
-                  .collection('delete_users')
-                  .add(data)
-                  .then((value) async => {
-                        await FirebaseAuth.instance.signOut(),
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) {
-                          return SignInScreen();
-                        }))
-                      })
-                  .catchError((e) => print("Failed to add user: $e"));
-            },
-            child: Text('退会する'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return InputTextHistoryPage();
-                  },
-                ),
-              );
-            },
-            child: Text('ページ遷移1'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return TypeaheadPage();
-                  },
-                ),
-              );
-            },
-            child: Text('ページ遷移2'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) {
-                    return SearchBarHintExample();
-                  },
-                ),
-              );
-            },
-            child: Text('ページ遷移3'),
-          ),
+          // Container(
+          //   padding: EdgeInsets.all(8),
+          //   child: Text('ログイン情報:${user.value!.email}'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () async {
+          //     final data = {
+          //       "uid": user.value!.uid,
+          //       "createdAt": Timestamp.now(),
+          //     };
+          //     await FirebaseFirestore.instance
+          //         .collection('delete_users')
+          //         .add(data)
+          //         .then((value) async => {
+          //               await FirebaseAuth.instance.signOut(),
+          //               Navigator.of(context).pushReplacement(
+          //                   MaterialPageRoute(builder: (context) {
+          //                 return SignInScreen();
+          //               }))
+          //             })
+          //         .catchError((e) => print("Failed to add user: $e"));
+          //   },
+          //   child: Text('退会する'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) {
+          //           return InputTextHistoryPage();
+          //         },
+          //       ),
+          //     );
+          //   },
+          //   child: Text('ページ遷移1'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) {
+          //           return TypeaheadPage();
+          //         },
+          //       ),
+          //     );
+          //   },
+          //   child: Text('ページ遷移2'),
+          // ),
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.of(context).push(
+          //       MaterialPageRoute(
+          //         builder: (context) {
+          //           return SearchBarHintExample();
+          //         },
+          //       ),
+          //     );
+          //   },
+          //   child: Text('ページ遷移3'),
+          // ),
           Expanded(
               // Stream 非同期処理の結果を元にWidgetを作る
               child: StreamBuilder<QuerySnapshot>(

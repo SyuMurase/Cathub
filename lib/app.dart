@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/authGate.dart';
+import 'package:flutter_demo_firebase/screen/home_screen.dart';
+import 'package:flutter_demo_firebase/screen/roomList_page.dart';
 import 'package:flutterfire_ui/i10n.dart';
 
 import 'L10n/flutter_fire_ui_localization_labels.dart';
@@ -13,6 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         // Creates an instance of FirebaseUILocalizationDelegate with overridden labels
         FlutterFireUILocalizations.withDefaultOverrides(
