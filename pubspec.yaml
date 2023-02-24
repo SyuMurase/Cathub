@@ -27,6 +27,8 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   lottie: ^2.2.0
   riverpod: ^2.2.0
+  freezed_annotation: ^2.2.0
+  state_notifier: ^0.7.2+1
 
 dev_dependencies:
   flutter_test:
