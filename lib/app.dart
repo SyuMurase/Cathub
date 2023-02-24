@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/authGate.dart';
-import 'package:flutter_demo_firebase/screen/home_screen.dart';
-import 'package:flutter_demo_firebase/screen/roomList_page.dart';
+import 'package:flutter_demo_firebase/presentation/screen/idea_list_screen.dart';
 import 'package:flutterfire_ui/i10n.dart';
 
 import 'L10n/flutter_fire_ui_localization_labels.dart';
@@ -28,7 +27,9 @@ class MyApp extends StatelessWidget {
         // This delegate is required to provide the labels that are not overridden by LabelOverrides
         FlutterFireUILocalizations.delegate,
       ],
-      home: AuthGate(),
+      // home: AuthGate(),
+      home: IdeaListScreen(),
+      // home: CustomDialog(),
     );
   }
 }

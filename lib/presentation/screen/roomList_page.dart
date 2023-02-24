@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_demo_firebase/screen/make_idea_screen.dart';
-import 'package:flutter_demo_firebase/screen/sample.dart';
+// import 'package:flutter_demo_firebase/screen/make_idea_screen.dart';
+// import 'package:flutter_demo_firebase/screen/sample.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -28,22 +28,22 @@ class RoomListPage extends HookWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
-            // onPressed: () async {
-            //   await FirebaseAuth.instance.signOut();
-            //   await FlutterFireUIAuth.signOut(context: context);
-            //   await Navigator.of(context)
-            //       .pushReplacement(MaterialPageRoute(builder: (context) {
-            //     return SignInScreen();
-            //   }));
-            // },
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              await FlutterFireUIAuth.signOut(context: context);
+              await Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (context) {
+                return SignInScreen();
+              }));
+            },
             // onPressed: () {
             //   Navigator.push(context,
             //       MaterialPageRoute(builder: (context) => MakeIdeaScreen()));
             // },
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => SampleScreen()));
-            },
+            // onPressed: () {
+            //   Navigator.push(context,
+            //       MaterialPageRoute(builder: (context) => SampleScreen()));
+            // },
           )
         ],
       ),

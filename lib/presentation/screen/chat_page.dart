@@ -17,11 +17,11 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   String randomId = Uuid().v4();
-  final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
+  // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
   void initState() {
-    getData();
     super.initState();
+    getData();
   }
 
   void getData() async {
@@ -68,11 +68,14 @@ class _ChatPageState extends State<ChatPage> {
     types.PreviewData previewData,
   ) {
     final index = _messages.indexWhere((element) => element.id == message.id);
-    // final updatedMessage = _messages[index].copyWith(previewData: previewData);
+    // final updatedMessage = (_messages[index] as types.TextMessage)
+    // .copyWith(previewData: previewData);
+    final updatedMessage = (_messages[index] as types.TextMessage)
+        .copyWith(previewData: previewData);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       setState(() {
-        // _messages[index] = updatedMessage;
+        _messages[index] = updatedMessage;
       });
     });
   }
