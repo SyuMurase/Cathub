@@ -1,22 +1,9 @@
-<<<<<<< HEAD
-import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_demo_firebase/presentation/screen/make_tittle_screen.dart';
-import 'package:lottie/lottie.dart';
-=======
 // import 'package:flutter/material.dart';
 // import 'package:flutter/src/foundation/key.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
-// import 'package:flutter_demo_firebase/presentation/screen/make_title_screen.dart';
+// import 'package:flutter_demo_firebase/presentation/screen/make_tittle_screen.dart';
 // import 'package:lottie/lottie.dart';
->>>>>>> origin/main
-
-// import 'home_screen.dart';
-// import 'make_tittle_screen.dart';
-// import '../widget/bottom_nav_bar.dart';
 
 // class MakeIdeaScreen extends StatelessWidget {
 //   const MakeIdeaScreen({Key? key}) : super(key: key);
@@ -58,11 +45,6 @@ import 'package:lottie/lottie.dart';
 //                       borderRadius: BorderRadius.circular(10),
 //                     ),
 //                   ),
-//                     hintText: "内容",
-//                     border: OutlineInputBorder(
-//                       borderRadius: BorderRadius.circular(10),
-//                     ),
-//                   ),
 //                 ),
 //               ),
 //             ),
@@ -72,9 +54,6 @@ import 'package:lottie/lottie.dart';
 //                   borderRadius: BorderRadius.circular(30),
 //                 ),
 //               ),
-//               onPressed: () {
-//                 Navigator.push(context, MaterialPageRoute(builder: (context) => MakeTittleScreen()));
-//               },
 //               onPressed: () {
 //                 Navigator.push(
 //                   context,

@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       // home: AuthGate(),
-      home: IdeaContentScreen(),
+      home: AuthGate(),
       // home: CustomDialog(),
     );
   }
