@@ -22,6 +22,7 @@ class BottomNavBar extends HookConsumerWidget {
     final bottomNavBarSelectedIndexNotifier =
         ref.watch(bottomNavBarSelectedIndexProvider.notifier);
     return BottomNavyBar(
+      backgroundColor: Colors.blue[100],
       items: [
         for (int i = 0; i < bottomContentList.length; i++) ...{
           BottomNavyBarItem(
