@@ -9,27 +9,29 @@ class CustomDialogComplete extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
-        body: Column(children: [
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Text("内容１"),
-              // Text("内容２"),
-              Lottie.asset("assets/lf30_editor_xtyovlen.json",
-                width: 250, height: 250),
-            ],
-          ),
-          Text('customdialogComplete'),
-          ElevatedButton(
-            child: Text(
-              "完了しました",
-              style: TextStyle(fontWeight: FontWeight.bold),
+        body: Center(
+          child: Column(children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Text("内容１"),
+                // Text("内容２"),
+                Lottie.asset("assets/lf30_editor_xtyovlen.json",
+                  width: 250, height: 250),
+              ],
             ),
-            onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
-              },
-          ),
-        ])
+            Text('完了しました'),
+            ElevatedButton(
+              child: Text(
+                "ホームへ",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
+            ),
+          ]),
+        )
         // child: ElevatedButton(
         //   onPressed: () {
         //     showDialog(

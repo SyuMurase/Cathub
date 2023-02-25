@@ -15,6 +15,7 @@ import 'presentation/screen/search_largetittle.dart';
 import 'presentation/screen/setting/setting_screen.dart';
 import 'presentation/screen/solved_idea_list_screen.dart';
 import 'presentation/screen/typeahead_page.dart';
+import 'presentation/widget/CustomDialog_Complete.dart';
 import 'presentation/widget/Custom_prose.dart';
 import 'presentation/widget/custom_dialog.dart';
 
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       // home: AuthGate(),
-      home: IdeaContentScreen(),
+      home: HomeScreen(),
       // home: CustomDialog(),
     );
   }
