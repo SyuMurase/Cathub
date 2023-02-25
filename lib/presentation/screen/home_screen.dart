@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_demo_firebase/presentation/screen/idea_content_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/large_category_set_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/solve_large_category_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/solved_idea_list_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/talk_screen.dart';
@@ -15,7 +16,7 @@ final List homePageList = [
   SolvedIdeaListScreen(),
   // MakeIdeaScreen(),
   IdeaContentScreen(),
-  SolveLargeCategoryScreen(),
+  LargeCategorySetScreen(),
   TalkScreen(),
 ];
 

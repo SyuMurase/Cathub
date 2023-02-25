@@ -7,7 +7,8 @@ import '../chat_room/chat_room.dart';
 
 abstract class BaseChatRoomRepository {
   Future<List<String>> retrieveLargeCategoryList();
-  Future<List<String>> retrieveSmallCategoryList({required String largeCategoryName});
+  Future<List<String>> retrieveSmallCategoryList(
+      {required String largeCategoryName});
   Future<List<ChatRoom>> retrieveChatRoomList(
       {required String largeCategoryName, required String smallCategoryName});
   Stream retrieveCustomMessageList({
@@ -78,6 +79,14 @@ class ChatRoomRepository implements BaseChatRoomRepository {
               querySnapshot.docs.forEach((doc) {
                 chatRoomCategoryList.add(ChatRoom.fromDocument(doc));
               }));
+      // final snap2 = await FirebaseFirestore.instance
+      //     .collection("largeCategory")
+      //     .doc(largeCategoryName)
+      //     .collection("smallCategory")
+      //     .doc(smallCategoryName)
+      //     .collection("chat_room")
+      //     .get();
+      // print(snap2);
       return chatRoomCategoryList;
     } on FirebaseException catch (e) {
       throw CustomException(message: e.message);

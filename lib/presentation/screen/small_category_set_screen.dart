@@ -9,15 +9,15 @@ import '../../domain/repository/chat_room_repository.dart';
 
 class SmallCategorySetScreen extends HookConsumerWidget {
   const SmallCategorySetScreen(
-      {required this.ideaContent,
-      required this.ideaTitle,
+      { this.ideaContent,
+       this.ideaTitle,
       required this.largeCategory,
       // required this.smallCategory,
       Key? key})
       : super(key: key);
 
-  final String ideaContent;
-  final String ideaTitle;
+  final String? ideaContent;
+  final String? ideaTitle;
   final String largeCategory;
   // final String smallCategory;
 
@@ -34,7 +34,7 @@ class SmallCategorySetScreen extends HookConsumerWidget {
           builder: (BuildContext context,
               AsyncSnapshot<List<String>> smallCategoryList) {
             if (smallCategoryList.connectionState != ConnectionState.done) {
-              return Center(child: Text("エラーが発生しています"));
+              return Center(child: CircularProgressIndicator());
             }
             if (smallCategoryList.hasError) {
               return Text(smallCategoryList.error.toString());

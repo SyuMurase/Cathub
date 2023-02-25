@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutterfire_ui/auth.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+// import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
-class ChatPage extends ConsumerStatefulWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage(
       {required this.name,
-      required this.ideaContent,
-      required this.ideaTitle,
+      this.ideaContent,
+      this.ideaTitle,
       required this.largeCategory,
       required this.smallCategory,
       Key? key})
       : super(key: key);
 
   final String name;
-  final String ideaContent;
-  final String ideaTitle;
+  final String? ideaContent;
+  final String? ideaTitle;
   final String largeCategory;
   final String smallCategory;
 
@@ -27,18 +27,18 @@ class ChatPage extends ConsumerStatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends ConsumerState<ChatPage> {
+class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   String randomId = Uuid().v4();
   // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
-
+  @override
   void initState() {
-    super.initState();
     // ref.watch(chatRoomRepositoryProvider).retrieveCustomMessageList(
     //     largeCategoryName: widget.largeCategoryName,
     //     smallCategoryName: widget.smallCategoryName,
     //     title: widget.title);
     getData();
+    super.initState();
   }
 
   void getData() async {
@@ -69,6 +69,8 @@ class _ChatPageState extends ConsumerState<ChatPage> {
   void _addMessage(types.TextMessage message) async {
     setState(() {
       _messages.insert(0, message);
+      print(_messages);
+      // print(widget.ideaTitle);
     });
     await FirebaseFirestore.instance
         .collection("largeCategory")
