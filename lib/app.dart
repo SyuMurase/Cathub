@@ -6,7 +6,7 @@ import 'package:flutterfire_ui/i10n.dart';
 import 'L10n/flutter_fire_ui_localization_labels.dart';
 import 'presentation/screen/home_screen.dart';
 import 'presentation/screen/make_idea_screen.dart';
-import 'presentation/screen/make_title_screen.dart';
+import 'presentation/screen/make_tittle_screen.dart';
 import 'presentation/screen/search_largetittle.dart';
 import 'presentation/screen/serch.dart';
 
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       // home: AuthGate(),
-      home: SearchlargetittleScreen(),
+      home: MaketitleScreen(),
       // home: CustomDialog(),
     );
   }

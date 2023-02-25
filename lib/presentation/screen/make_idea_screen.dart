@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter_demo_firebase/presentation/screen/make_title_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/make_tittle_screen.dart';
 import 'package:lottie/lottie.dart';
 
 class MakeIdeaScreen extends StatelessWidget {
