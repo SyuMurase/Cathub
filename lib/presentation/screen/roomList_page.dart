@@ -24,7 +24,7 @@ class RoomListPage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('チャット'),
+        title: Text('カテゴリ詳細指定'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
