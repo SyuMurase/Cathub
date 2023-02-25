@@ -47,11 +47,12 @@ class lastcommentScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MaketitleScreen()), //トークに戻るようにする
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => MaketitleScreen(),
+                //       ), //トークに戻るようにする
+                // );
               },
               child: Padding(
                 padding:

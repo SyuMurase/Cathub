@@ -6,6 +6,9 @@ import 'L10n/flutter_fire_ui_localization_labels.dart';
 import 'presentation/screen/chat_page.dart';
 import 'presentation/screen/home_screen.dart';
 import 'presentation/screen/horizontal_list.dart';
+import 'presentation/screen/idea_content_screen.dart';
+import 'presentation/screen/idea_title_screen.dart';
+import 'presentation/screen/input_text_history_page.dart';
 import 'presentation/screen/make_idea_screen.dart';
 import 'presentation/screen/roomList_page.dart';
 import 'presentation/screen/sample.dart';
@@ -39,7 +42,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       // home: AuthGate(),
-      home: SearchlargetittleScreen(),
+      home: IdeaContentScreen(),
       // home: CustomDialog(),
     );
   }
