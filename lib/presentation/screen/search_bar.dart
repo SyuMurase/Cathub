@@ -101,7 +101,8 @@ class _SearchBarWithHintState extends State<SearchBarWithHint>
   void showHint() {
     findParent();
     overlayEntry = _overlayEntryBuilder();
-    Overlay.of(context)!.insert(overlayEntry);
+    // Overlay.of(context)!.insert(overlayEntry);
+    Overlay.of(context).insert(overlayEntry);
     isHintShown = true;
   }
 
