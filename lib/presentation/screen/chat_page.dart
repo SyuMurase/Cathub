@@ -4,32 +4,52 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutterfire_ui/auth.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
-class ChatPage extends StatefulWidget {
-  const ChatPage(this.name, {Key? key}) : super(key: key);
+class ChatPage extends ConsumerStatefulWidget {
+  const ChatPage(
+      {required this.name,
+      required this.ideaContent,
+      required this.ideaTitle,
+      required this.largeCategory,
+      required this.smallCategory,
+      Key? key})
+      : super(key: key);
 
   final String name;
+  final String ideaContent;
+  final String ideaTitle;
+  final String largeCategory;
+  final String smallCategory;
+
   @override
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends State<ChatPage> {
+class _ChatPageState extends ConsumerState<ChatPage> {
   List<types.Message> _messages = [];
   String randomId = Uuid().v4();
   // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
 
   void initState() {
     super.initState();
+    // ref.watch(chatRoomRepositoryProvider).retrieveCustomMessageList(
+    //     largeCategoryName: widget.largeCategoryName,
+    //     smallCategoryName: widget.smallCategoryName,
+    //     title: widget.title);
     getData();
   }
 
   void getData() async {
     final getData = await FirebaseFirestore.instance
-        .collection('chat_room')
-        .doc(widget.name)
-        .collection('contents')
-        .orderBy("createdAt", descending: true)
+        .collection("largeCategory")
+        .doc(widget.largeCategory)
+        .collection("smallCategory")
+        .doc(widget.smallCategory)
+        .collection("chat_room")
+        .doc(widget.ideaTitle)
+        .collection("messageList")
         .get();
 
     final message = getData.docs
@@ -51,9 +71,13 @@ class _ChatPageState extends State<ChatPage> {
       _messages.insert(0, message);
     });
     await FirebaseFirestore.instance
-        .collection('chat_room')
-        .doc(widget.name)
-        .collection('contents')
+        .collection("largeCategory")
+        .doc(widget.largeCategory)
+        .collection("smallCategory")
+        .doc(widget.smallCategory)
+        .collection("chat_room")
+        .doc(widget.ideaTitle)
+        .collection("messageList")
         .add({
       'uid': message.author.id,
       'name': message.author.firstName,
@@ -118,7 +142,6 @@ class _ChatPageState extends State<ChatPage> {
             id: randomId,
             text: message.text,
           );
-
           _addMessage(textMessage);
         },
         user: _uid,
