@@ -30,6 +30,7 @@ dependencies:
   state_notifier: ^0.7.2+1
   json_serializable: ^6.6.1
   analyzer: ^5.6.0
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
