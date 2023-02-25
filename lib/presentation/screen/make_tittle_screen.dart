@@ -31,7 +31,7 @@ class MakeTittleScreen extends StatelessWidget {
                 width: 250, height: 250),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("あなたの発案を書き殴ってください!"),
+              child: Text("発案のタイトルを書いてください!"),
             ),
             Padding(
               padding: const EdgeInsets.all(40.0),

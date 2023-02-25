@@ -1,7 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/domain/repository/chat_room_repository.dart';
+import 'package:flutter_demo_firebase/presentation/screen/solve_large_category_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/solved_idea_list_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/talk_screen.dart';
 import 'package:flutter_demo_firebase/presentation/widget/large_category_card.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'idea_content_screen.dart';
+
+final List homePageList = [
+  SolvedIdeaListScreen(),
+  // MakeIdeaScreen(),
+  IdeaContentScreen(),
+  SolveLargeCategoryScreen(),
+  TalkScreen(),
+];
 
 class LargeCategorySetScreen extends HookConsumerWidget {
   const LargeCategorySetScreen(
@@ -56,5 +69,9 @@ class LargeCategorySetScreen extends HookConsumerWidget {
             }
           }),
     );
+  //   pageController(i) {
+  //   return homePageList[i];
+  // }
   }
 }
+_]]]]:
