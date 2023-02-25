@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_demo_firebase/presentation/screen/idea_content_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/solve_large_category_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/solved_idea_list_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/talk_screen.dart';
@@ -12,7 +13,8 @@ import 'make_idea_screen.dart';
 
 final List homePageList = [
   SolvedIdeaListScreen(),
-  MakeIdeaScreen(),
+  // MakeIdeaScreen(),
+  IdeaContentScreen(),
   SolveLargeCategoryScreen(),
   TalkScreen(),
 ];
@@ -31,7 +33,7 @@ class HomeScreen extends HookConsumerWidget {
       //     IconButton(
       //         onPressed: () {
       //           Navigator.push(context,
-      //               MaterialPageRoute(builder: (context) => SettingScreen()));
+                    // MaterialPageRoute(builder: (context) => SettingScreen()));
       //         },
       //         icon: Icon(Icons.settings))
       //   ],

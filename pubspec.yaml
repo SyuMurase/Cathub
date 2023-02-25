@@ -1,7 +1,7 @@
 name: flutter_demo_firebase
 description: A new Flutter project.
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  freezed_annotation: ^2.2.0
   cupertino_icons: ^1.0.2
   firebase_core: ^2.6.1
   cloud_firestore: ^4.4.2
@@ -27,12 +27,15 @@ dependencies:
   bottom_navy_bar: ^6.0.0
   lottie: ^2.2.0
   riverpod: ^2.2.0
-  freezed_annotation: ^2.2.0
   state_notifier: ^0.7.2+1
+  json_serializable: ^6.6.1
+  analyzer: ^5.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner: ^2.3.3
+  freezed: ^2.3.2
 
 
 flutter:
@@ -40,4 +43,3 @@ flutter:
 
   assets:
     - assets/
-

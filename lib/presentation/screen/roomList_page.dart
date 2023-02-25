@@ -6,7 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutterfire_ui/auth.dart';
 
-import 'addRoom_page.dart';
+import 'idea_content_screen.dart';
 import 'chat_page.dart';
 
 class RoomListPage extends HookWidget {
@@ -24,7 +24,7 @@ class RoomListPage extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('チャット'),
+        title: Text('カテゴリ詳細指定'),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.logout),
@@ -132,7 +132,13 @@ class RoomListPage extends HookWidget {
                             await Navigator.of(context).push(
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return ChatPage(document['name']);
+                                  return SizedBox();
+                                  // return ChatPage(
+                                  //   name: document['name'],
+                                  //   largeCategoryName: "",
+                                  //   smallCategoryName: "",
+                                  //   title: "",
+                                  // );
                                 },
                               ),
                             );
@@ -163,7 +169,7 @@ class RoomListPage extends HookWidget {
           await Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) {
             // return AddPostPage();
-            return AddRoomPage();
+            return IdeaContentScreen();
           }));
         },
       ),
