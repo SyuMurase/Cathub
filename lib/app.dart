@@ -38,8 +38,8 @@ class MyApp extends StatelessWidget {
         // This delegate is required to provide the labels that are not overridden by LabelOverrides
         FlutterFireUILocalizations.delegate,
       ],
-      home: AuthGate(),
-      // home: MakeIdeaScreen(),
+      // home: AuthGate(),
+      home: SearchlargetittleScreen(),
       // home: CustomDialog(),
     );
   }

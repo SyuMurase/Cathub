@@ -5,27 +5,14 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_demo_firebase/presentation/screen/make_title_screen.dart';
 import 'package:lottie/lottie.dart';
 
-import 'home_screen.dart';
-import 'make_tittle_screen.dart';
-import '../widget/bottom_nav_bar.dart';
-
-class MakeIdeaScreen extends StatelessWidget {
-  const MakeIdeaScreen({Key? key}) : super(key: key);
+class lastcommentScreen extends StatelessWidget {
+  const lastcommentScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('あなたの発案'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(mainAxisSize: MainAxisSize.min, children: [
-              Icon(Icons.money),
-              Text("10P"),
-            ]),
-          ),
-        ],
+        title: const Text('最後の発言'),
       ),
       body: Center(
         child: Column(
@@ -34,7 +21,8 @@ class MakeIdeaScreen extends StatelessWidget {
                 width: 250, height: 250),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text("あなたの発案を書き殴ってください!"),
+              child: Text("コメントの評価を終了するとメッセージを送信できなくなります\n"
+                  "最後にルームに送信する内容を書きましょう！"),
             ),
             Padding(
               padding: const EdgeInsets.all(40.0),
@@ -44,11 +32,6 @@ class MakeIdeaScreen extends StatelessWidget {
                 child: TextField(
                   maxLines: 5,
                   decoration: InputDecoration(
-                    hintText: "内容",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
                     hintText: "内容",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -64,12 +47,10 @@ class MakeIdeaScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MakeTittleScreen()));
-              },
-              onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MaketitleScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => MaketitleScreen()), //トークに戻るようにする
                 );
               },
               child: Padding(
