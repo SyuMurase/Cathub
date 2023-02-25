@@ -30,7 +30,7 @@ class IdeaTitleScreen extends HookConsumerWidget {
                     width: 250, height: 250),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text("あなたの発案を書き殴ってください!"),
+                  child: Text("発案にタイトルをつけましょう!\n 〇〇字以内に書きましょう"),
                 ),
                 TextField(
                   decoration: InputDecoration(labelText: 'タイトル'),
