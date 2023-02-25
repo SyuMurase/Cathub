@@ -4,18 +4,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:lottie/lottie.dart';
 
-import 'home_screen.dart';
-import 'make_tittle_screen.dart';
-import '../widget/bottom_nav_bar.dart';
+import 'search_largetittle.dart';
 
-class MakeIdeaScreen extends StatelessWidget {
-  const MakeIdeaScreen({Key? key}) : super(key: key);
+class MakeTittleScreen extends StatelessWidget {
+  const MakeTittleScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('あなたの発案'),
+        title: const Text('発案のタイトル'),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -43,11 +41,10 @@ class MakeIdeaScreen extends StatelessWidget {
                 child: TextField(
                   maxLines: 5,
                   decoration: InputDecoration(
-                    hintText: "内容",
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
+                      hintText: "内容",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),),
                 ),
               ),
             ),
@@ -58,20 +55,16 @@ class MakeIdeaScreen extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => MakeTittleScreen()));
-              },
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SearchApp()));
+              }, 
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),
                 child: Text("次へ"),
               ),
-            ),
+              ),
           ],
         ),
       ),
     );
-      pageController(i) {
-    return homePageList[i]; 
-    }
   }
 }
