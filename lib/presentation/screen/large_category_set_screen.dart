@@ -34,20 +34,18 @@ class LargeCategorySetScreen extends HookConsumerWidget {
                   child: Text("カテゴリがありません"),
                 );
               } else {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: largeCategoryList.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return LargeCategoryCard(
-                          ideaContent: ideaContent,
-                          ideaTitle: ideaTitle,
-                          largeCategory: largeCategoryList.data![index],
-                        );
-                      },
-                    ),
+                return SingleChildScrollView(
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: largeCategoryList.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return LargeCategoryCard(
+                        ideaContent: ideaContent,
+                        ideaTitle: ideaTitle,
+                        largeCategory: largeCategoryList.data![index],
+                      );
+                    },
                   ),
                 );
               }

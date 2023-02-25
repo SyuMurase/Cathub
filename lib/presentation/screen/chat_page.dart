@@ -33,15 +33,20 @@ class _ChatPageState extends State<ChatPage> {
   // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
   @override
   void initState() {
+    super.initState();
     // ref.watch(chatRoomRepositoryProvider).retrieveCustomMessageList(
     //     largeCategoryName: widget.largeCategoryName,
     //     smallCategoryName: widget.smallCategoryName,
     //     title: widget.title);
     getData();
-    super.initState();
   }
 
-  void getData() async {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> getData() async {
     final getData = await FirebaseFirestore.instance
         .collection("largeCategory")
         .doc(widget.largeCategory)
@@ -61,12 +66,14 @@ class _ChatPageState extends State<ChatPage> {
             text: d.data()['text']))
         .toList();
 
-    setState(() {
-      _messages = [...message];
-    });
+    if (mounted) {
+      setState(() {
+        _messages = [...message];
+      });
+    }
   }
 
-  void _addMessage(types.TextMessage message) async {
+  Future<void> _addMessage(types.TextMessage message) async {
     setState(() {
       _messages.insert(0, message);
       print(_messages);
@@ -87,6 +94,7 @@ class _ChatPageState extends State<ChatPage> {
       'id': message.id,
       'text': message.text,
     });
+    await Future.delayed(Duration(seconds: 3));
   }
 
   void _handlePreviewDataFetched(
@@ -128,6 +136,7 @@ class _ChatPageState extends State<ChatPage> {
               })
         ],
       ),
+      //  isLoading flag 三項演算子
       body: Chat(
         theme: const DefaultChatTheme(
           inputBackgroundColor: Colors.blue,
@@ -137,14 +146,14 @@ class _ChatPageState extends State<ChatPage> {
         showUserNames: true,
         messages: _messages,
         onPreviewDataFetched: _handlePreviewDataFetched,
-        onSendPressed: (types.PartialText message) {
+        onSendPressed: (types.PartialText message) async {
           final textMessage = types.TextMessage(
             author: _uid,
             createdAt: DateTime.now().millisecondsSinceEpoch,
             id: randomId,
             text: message.text,
           );
-          _addMessage(textMessage);
+          await _addMessage(textMessage);
         },
         user: _uid,
       ),

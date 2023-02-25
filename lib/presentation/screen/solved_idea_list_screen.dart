@@ -21,6 +21,7 @@ class SolvedIdeaListScreen extends StatelessWidget {
               icon: Icon(Icons.settings))
         ],
       ),
+      // body: FutureBuilder(),
     );
   }
 }

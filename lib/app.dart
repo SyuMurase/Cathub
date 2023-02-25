@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/authGate.dart';
+import 'package:flutter_demo_firebase/presentation/screen/chat_sample_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/idea_list_screen.dart';
 import 'package:flutterfire_ui/i10n.dart';
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       home: AuthGate(),
+      // home: ChatSamplePage(),
       // home: IdeaListScreen(),
       // home: CustomDialog(),
     );

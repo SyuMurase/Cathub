@@ -45,21 +45,19 @@ class SmallCategorySetScreen extends HookConsumerWidget {
                   child: Text("カテゴリがありません"),
                 );
               } else {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: smallCategoryList.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return SmallCategoryCard(
-                          ideaContent: ideaContent,
-                          ideaTitle: ideaTitle,
-                          largeCategory: largeCategory,
-                          smallCategory: smallCategoryList.data![index],
-                        );
-                      },
-                    ),
+                return SingleChildScrollView(
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: smallCategoryList.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return SmallCategoryCard(
+                        ideaContent: ideaContent,
+                        ideaTitle: ideaTitle,
+                        largeCategory: largeCategory,
+                        smallCategory: smallCategoryList.data![index],
+                      );
+                    },
                   ),
                 );
               }

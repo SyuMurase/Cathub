@@ -1,3 +1,4 @@
+import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,23 +15,54 @@ class ChatRoomCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => ChatPage(
-                      largeCategory: chatRoom.largeCategoryName,
-                      smallCategory: chatRoom.smallCategoryName,
-                      ideaTitle: chatRoom.title,
-                      name: "",
-                    )));
-      },
-      child: Card(
-        child: Column(children: [
-          Text(chatRoom.title),
-        ]),
-      ),
+    return 
+    // GestureDetector(
+    //   onTap: () {
+    //     Navigator.push(
+    //       context,
+    //       MaterialPageRoute(
+    //         builder: (context) => ChatPage(
+    //           largeCategory: chatRoom.largeCategoryName,
+    //           smallCategory: chatRoom.smallCategoryName,
+    //           ideaTitle: chatRoom.title,
+    //           name: "",
+    //         ),
+    //       ),
+    //     );
+    //   },
+    //   child: 
+      Card(
+        child: ExpandablePanel(
+          header: Text(chatRoom.title),
+          collapsed: const Text("詳細"),
+          expanded: Row(
+            children: [
+              Text(
+                chatRoom.content,
+                overflow: TextOverflow.clip,
+              ),
+              TextButton(onPressed: () {
+                        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ChatPage(
+              largeCategory: chatRoom.largeCategoryName,
+              smallCategory: chatRoom.smallCategoryName,
+              ideaTitle: chatRoom.title,
+              name: "",
+            ),
+          ),
+        );
+              }, child: const Text("チャットへ"))
+            ],
+          ),
+        ),
+        // elevation: 3,
+        // child: Column(children: [
+        //   Text(chatRoom.title),
+        //   Text(chatRoom.content)
+        // ]),
+      // ),
     );
   }
 }

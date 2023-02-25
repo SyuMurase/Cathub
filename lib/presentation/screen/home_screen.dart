@@ -40,11 +40,11 @@ class HomeScreen extends HookConsumerWidget {
       //   ],
       // ),
       body: pageController(bottomNavBarSelectedIndex),
-            bottomNavigationBar: BottomNavBar(),
-
+      bottomNavigationBar: BottomNavBar(),
     );
   }
-    pageController(i) {
+
+  pageController(i) {
     return homePageList[i];
   }
 }
