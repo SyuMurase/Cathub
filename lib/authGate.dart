@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_firebase/presentation/screen/home_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/roomList_page.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -37,9 +38,7 @@ class AuthGate extends StatelessWidget {
             },
             providerConfigs: [
               EmailProviderConfiguration(),
-              GoogleProviderConfiguration(
-                clientId:''
-              ),
+              GoogleProviderConfiguration(clientId: ''),
               AppleProviderConfiguration(),
               FacebookProviderConfiguration(
                 clientId: '...',
@@ -49,7 +48,8 @@ class AuthGate extends StatelessWidget {
         }
 
         // Render your application if authenticated
-        return RoomListPage();
+        // return RoomListPage();
+        return HomeScreen();
       },
     );
   }

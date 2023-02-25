@@ -22,7 +22,7 @@ class CustomDialog extends StatelessWidget {
                   children: [
                     Text("内容１"),
                     Text("内容２"),
-                    Lottie.asset("assets/lf30_editor_xtyovlen.json"),
+                    // Lottie.asset("assets/lf30_editor_xtyovlen.json"),
                   ],
                 ),
                 actions: [
