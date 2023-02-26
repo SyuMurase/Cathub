@@ -26,20 +26,29 @@ class TalkScreen extends HookConsumerWidget {
               return Text(chatRoomList.error.toString());
             }
             if (chatRoomList.hasData) {
-              print(chatRoomList.data);
-              return Center(
-                child: SingleChildScrollView(
-                  child: ListView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: chatRoomList.data!.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      print(chatRoomList.data![index]);
-                      return ChatRoomCard(
-                        chatRoom: chatRoomList.data![index],
-                      );
-                    },
-                  ),
+              // print("chatRoomList.data : ${chatRoomList.data}");
+              if (chatRoomList.data == []) {
+                return Center(
+                  child: Text("まだ自分の発案がありません"),
+                );
+              }
+              return SingleChildScrollView(
+                child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: chatRoomList.data!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    // final List<String> chatRoomTitleList = [];
+                    // chatRoomList.data!.forEach(
+                    //   (element) {
+                    //     if (element.)
+                    //     chatRoomTitleList.add(element.title);
+                    //   },
+                    // );
+                    return ChatRoomCard(
+                      chatRoom: chatRoomList.data![index],
+                    );
+                  },
                 ),
               );
             } else {

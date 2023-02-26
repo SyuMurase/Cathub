@@ -3,8 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutterfire_ui/auth.dart';
-// import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
@@ -34,10 +32,6 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    // ref.watch(chatRoomRepositoryProvider).retrieveCustomMessageList(
-    //     largeCategoryName: widget.largeCategoryName,
-    //     smallCategoryName: widget.smallCategoryName,
-    //     title: widget.title);
     getData();
   }
 
@@ -54,7 +48,7 @@ class _ChatPageState extends State<ChatPage> {
         .doc(widget.smallCategory)
         .collection("chat_room")
         .doc(widget.ideaTitle)
-        .collection("messageList")
+        .collection("messageList").orderBy("createdAt", descending: true)
         .get();
 
     final message = getData.docs
@@ -76,7 +70,7 @@ class _ChatPageState extends State<ChatPage> {
   Future<void> _addMessage(types.TextMessage message) async {
     setState(() {
       _messages.insert(0, message);
-      print(_messages);
+      // print(_messages);
       // print(widget.ideaTitle);
     });
     await FirebaseFirestore.instance
@@ -126,14 +120,40 @@ class _ChatPageState extends State<ChatPage> {
         title: Text('チャット'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-                await Navigator.of(context)
-                    .pushReplacement(MaterialPageRoute(builder: (context) {
-                  return SignInScreen();
-                }));
-              })
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("チャットを閉じますか？"),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("いいえ")),
+                        ElevatedButton(
+                          child: Text(
+                            "はい",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () async {
+                              await FirebaseFirestore.instance
+                                .collection("largeCategory")
+                                .doc(widget.largeCategory)
+                                .collection("smallCategory")
+                                .doc(widget.smallCategory)
+                                .collection("chat_room")
+                                .doc(widget.ideaTitle)
+                                .update({"isSolved" : true});
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: Icon(Icons.check))
         ],
       ),
       //  isLoading flag 三項演算子

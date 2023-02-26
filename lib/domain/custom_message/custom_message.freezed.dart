@@ -21,9 +21,10 @@ CustomMessage _$CustomMessageFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$CustomMessage {
   String? get id => throw _privateConstructorUsedError;
-  String get sendUserId => throw _privateConstructorUsedError;
-  String get content => throw _privateConstructorUsedError;
-  DateTime get sendAt => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get text => throw _privateConstructorUsedError;
+  String get uid => throw _privateConstructorUsedError;
+  DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +38,8 @@ abstract class $CustomMessageCopyWith<$Res> {
           CustomMessage value, $Res Function(CustomMessage) then) =
       _$CustomMessageCopyWithImpl<$Res, CustomMessage>;
   @useResult
-  $Res call({String? id, String sendUserId, String content, DateTime sendAt});
+  $Res call(
+      {String? id, String name, String text, String uid, DateTime createdAt});
 }
 
 /// @nodoc
@@ -54,26 +56,31 @@ class _$CustomMessageCopyWithImpl<$Res, $Val extends CustomMessage>
   @override
   $Res call({
     Object? id = freezed,
-    Object? sendUserId = null,
-    Object? content = null,
-    Object? sendAt = null,
+    Object? name = null,
+    Object? text = null,
+    Object? uid = null,
+    Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      sendUserId: null == sendUserId
-          ? _value.sendUserId
-          : sendUserId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
-      sendAt: null == sendAt
-          ? _value.sendAt
-          : sendAt // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ) as $Val);
   }
@@ -87,7 +94,8 @@ abstract class _$$_CustomMessageCopyWith<$Res>
       __$$_CustomMessageCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? id, String sendUserId, String content, DateTime sendAt});
+  $Res call(
+      {String? id, String name, String text, String uid, DateTime createdAt});
 }
 
 /// @nodoc
@@ -102,26 +110,31 @@ class __$$_CustomMessageCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = freezed,
-    Object? sendUserId = null,
-    Object? content = null,
-    Object? sendAt = null,
+    Object? name = null,
+    Object? text = null,
+    Object? uid = null,
+    Object? createdAt = null,
   }) {
     return _then(_$_CustomMessage(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String?,
-      sendUserId: null == sendUserId
-          ? _value.sendUserId
-          : sendUserId // ignore: cast_nullable_to_non_nullable
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
               as String,
-      content: null == content
-          ? _value.content
-          : content // ignore: cast_nullable_to_non_nullable
+      text: null == text
+          ? _value.text
+          : text // ignore: cast_nullable_to_non_nullable
               as String,
-      sendAt: null == sendAt
-          ? _value.sendAt
-          : sendAt // ignore: cast_nullable_to_non_nullable
+      uid: null == uid
+          ? _value.uid
+          : uid // ignore: cast_nullable_to_non_nullable
+              as String,
+      createdAt: null == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
     ));
   }
@@ -132,9 +145,10 @@ class __$$_CustomMessageCopyWithImpl<$Res>
 class _$_CustomMessage extends _CustomMessage {
   const _$_CustomMessage(
       {this.id,
-      required this.sendUserId,
-      required this.content,
-      required this.sendAt})
+      required this.name,
+      required this.text,
+      required this.uid,
+      required this.createdAt})
       : super._();
 
   factory _$_CustomMessage.fromJson(Map<String, dynamic> json) =>
@@ -143,15 +157,17 @@ class _$_CustomMessage extends _CustomMessage {
   @override
   final String? id;
   @override
-  final String sendUserId;
+  final String name;
   @override
-  final String content;
+  final String text;
   @override
-  final DateTime sendAt;
+  final String uid;
+  @override
+  final DateTime createdAt;
 
   @override
   String toString() {
-    return 'CustomMessage(id: $id, sendUserId: $sendUserId, content: $content, sendAt: $sendAt)';
+    return 'CustomMessage(id: $id, name: $name, text: $text, uid: $uid, createdAt: $createdAt)';
   }
 
   @override
@@ -160,15 +176,16 @@ class _$_CustomMessage extends _CustomMessage {
         (other.runtimeType == runtimeType &&
             other is _$_CustomMessage &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.sendUserId, sendUserId) ||
-                other.sendUserId == sendUserId) &&
-            (identical(other.content, content) || other.content == content) &&
-            (identical(other.sendAt, sendAt) || other.sendAt == sendAt));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, sendUserId, content, sendAt);
+  int get hashCode => Object.hash(runtimeType, id, name, text, uid, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -187,9 +204,10 @@ class _$_CustomMessage extends _CustomMessage {
 abstract class _CustomMessage extends CustomMessage {
   const factory _CustomMessage(
       {final String? id,
-      required final String sendUserId,
-      required final String content,
-      required final DateTime sendAt}) = _$_CustomMessage;
+      required final String name,
+      required final String text,
+      required final String uid,
+      required final DateTime createdAt}) = _$_CustomMessage;
   const _CustomMessage._() : super._();
 
   factory _CustomMessage.fromJson(Map<String, dynamic> json) =
@@ -198,11 +216,13 @@ abstract class _CustomMessage extends CustomMessage {
   @override
   String? get id;
   @override
-  String get sendUserId;
+  String get name;
   @override
-  String get content;
+  String get text;
   @override
-  DateTime get sendAt;
+  String get uid;
+  @override
+  DateTime get createdAt;
   @override
   @JsonKey(ignore: true)
   _$$_CustomMessageCopyWith<_$_CustomMessage> get copyWith =>

@@ -40,7 +40,7 @@ class IdeaListScreen extends HookConsumerWidget {
           // }
           // }
           else {
-            print("エラー2");
+            // print("エラー2");
             return SizedBox();
           }
         }));

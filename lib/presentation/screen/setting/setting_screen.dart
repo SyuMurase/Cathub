@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_firebase/presentation/screen/report_screen.dart';
 import 'package:flutterfire_ui/auth.dart';
 
 import 'terms_of_service_screen.dart';
@@ -87,6 +88,17 @@ class SettingScreen extends StatelessWidget {
             child: ListTile(
               title: Text("ログアウト"),
               leading: Icon(Icons.logout),
+              // tileColor: Color.fromARGB(255, 255, 93, 130),
+            ),
+          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => ReportScreen()));
+            },
+            child: ListTile(
+              title: Text("報告"),
+              leading: Icon(Icons.report),
               // tileColor: Color.fromARGB(255, 255, 93, 130),
             ),
           ),
