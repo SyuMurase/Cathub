@@ -32,7 +32,7 @@ dependencies:
   analyzer: ^5.6.0
   expandable: ^5.0.1
   intro_slider: ^4.2.0
-
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo_firebase/presentation/screen/home_screen.dart';
 import 'package:lottie/lottie.dart';
 
-import 'CustomDialog_Complete.dart';
-
-class CustomDialog extends StatelessWidget {
-  const CustomDialog({Key? key}) : super(key: key);
+class CustomDialogComplete extends StatelessWidget {
+  const CustomDialogComplete({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,25 +13,20 @@ class CustomDialog extends StatelessWidget {
           Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text("内容１"),
-              Text("内容２"),
+              // Text("内容１"),
+              // Text("内容２"),
               Lottie.asset("assets/lf30_editor_xtyovlen.json",
                 width: 250, height: 250),
             ],
           ),
-          Text('customdai'),
-          TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text("いいえ")),
+          Text('customdialogComplete'),
           ElevatedButton(
             child: Text(
-              "はい",
+              "完了しました",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => CustomDialogComplete()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen()));
               },
           ),
         ])

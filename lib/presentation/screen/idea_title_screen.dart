@@ -80,6 +80,44 @@ class IdeaTitleScreen extends HookConsumerWidget {
           )
         ]),
       ),
+      // body: Center(
+      //   child: Container(
+      //     padding: EdgeInsets.all(32),
+      //     child: Column(
+      //         mainAxisAlignment: MainAxisAlignment.center,
+      //         children: <Widget>[
+      //           Lottie.asset("assets/lf30_editor_xtyovlen.json",
+      //               width: 250, height: 250),
+      //           Padding(
+      //             padding: const EdgeInsets.all(8.0),
+      //             child: Text("発案にタイトルをつけましょう!\n 〇〇字以内に書きましょう"),
+      //           ),
+      //           TextField(
+      //             decoration: InputDecoration(labelText: 'タイトル'),
+      //             controller: ideaTitleController,
+      //             maxLines: 3,
+      //           ),
+      //           const SizedBox(
+      //             height: 8,
+      //           ),
+      //           Container(
+      //             width: double.infinity,
+      //             child: ElevatedButton(
+      //               child: Text("次へ"),
+      //               onPressed: () {
+      //                 Navigator.push(
+      //                     context,
+      //                     MaterialPageRoute(
+      //                         builder: (context) => LargeCategorySetScreen(
+      //                               ideaContent: ideaContent,
+      //                               ideaTitle: ideaTitleController.text,
+      //                             )));
+      //               },
+      //             ),
+      //           )
+      //         ]),
+      //   ),
+      // ),
     );
   }
 }

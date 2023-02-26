@@ -5,6 +5,8 @@ import 'package:flutter_demo_firebase/presentation/screen/intro_slider_screen.da
 import 'package:flutter_demo_firebase/presentation/screen/roomList_page.dart';
 import 'package:flutterfire_ui/auth.dart';
 
+import 'presentation/screen/home_screen.dart';
+
 class AuthGate extends StatelessWidget {
   const AuthGate({Key? key}) : super(key: key);
 
@@ -50,6 +52,7 @@ class AuthGate extends StatelessWidget {
         }
 
         // Render your application if authenticated
+        // return RoomListPage();
         // return RoomListPage();
         return HomeScreen();
       },
