@@ -24,7 +24,8 @@ class ReportScreen extends HookConsumerWidget {
       ),
       body: Center(
         child: Column(children: [
-          Lottie.asset("assets/9521-reported.json", height: MediaQuery.of(context).size.height * 0.25),
+          Lottie.asset("assets/9521-reported.json",
+              height: MediaQuery.of(context).size.height * 0.25),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text("問題のあるユーザーを報告してください"),
@@ -91,6 +92,7 @@ class ReportScreen extends HookConsumerWidget {
                     await ref.watch(reportRepositoryProvider).addReport(
                         accusedUserEmail: reportAccusedUserEmailController.text,
                         content: reportContentController.text);
+                    Navigator.pop(context);
                   },
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 50),

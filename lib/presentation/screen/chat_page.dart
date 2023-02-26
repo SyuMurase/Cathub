@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_demo_firebase/presentation/screen/idea_content_screen.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
@@ -48,7 +49,8 @@ class _ChatPageState extends State<ChatPage> {
         .doc(widget.smallCategory)
         .collection("chat_room")
         .doc(widget.ideaTitle)
-        .collection("messageList").orderBy("createdAt", descending: true)
+        .collection("messageList")
+        .orderBy("createdAt", descending: true)
         .get();
 
     final message = getData.docs
@@ -118,6 +120,13 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('チャット'),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.push(context,
+        //         MaterialPageRoute(builder: (context) => IdeaContentScreen()));
+        //   },
+        //   icon: Icon(Icons.arrow_back_ios),
+        // ),
         actions: <Widget>[
           IconButton(
               onPressed: () {
@@ -138,14 +147,14 @@ class _ChatPageState extends State<ChatPage> {
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           onPressed: () async {
-                              await FirebaseFirestore.instance
+                            await FirebaseFirestore.instance
                                 .collection("largeCategory")
                                 .doc(widget.largeCategory)
                                 .collection("smallCategory")
                                 .doc(widget.smallCategory)
                                 .collection("chat_room")
                                 .doc(widget.ideaTitle)
-                                .update({"isSolved" : true});
+                                .update({"isSolved": true});
                           },
                         ),
                       ],
