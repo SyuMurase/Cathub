@@ -5,11 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class LargeCategorySetScreen extends HookConsumerWidget {
   const LargeCategorySetScreen(
-      {required this.ideaContent, required this.ideaTitle, Key? key})
+      {this.ideaContent, this.ideaTitle, Key? key})
       : super(key: key);
 
-  final String ideaContent;
-  final String ideaTitle;
+  final String? ideaContent;
+  final String? ideaTitle;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -23,7 +23,7 @@ class LargeCategorySetScreen extends HookConsumerWidget {
           builder: (BuildContext context,
               AsyncSnapshot<List<String>> largeCategoryList) {
             if (largeCategoryList.connectionState != ConnectionState.done) {
-              return Center(child: Text("エラーが発生しています"));
+              return Center(child: CircularProgressIndicator());
             }
             if (largeCategoryList.hasError) {
               return Text(largeCategoryList.error.toString());
@@ -34,20 +34,18 @@ class LargeCategorySetScreen extends HookConsumerWidget {
                   child: Text("カテゴリがありません"),
                 );
               } else {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: largeCategoryList.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return LargeCategoryCard(
-                          ideaContent: ideaContent,
-                          ideaTitle: ideaTitle,
-                          largeCategory: largeCategoryList.data![index],
-                        );
-                      },
-                    ),
+                return SingleChildScrollView(
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: largeCategoryList.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return LargeCategoryCard(
+                        ideaContent: ideaContent,
+                        ideaTitle: ideaTitle,
+                        largeCategory: largeCategoryList.data![index],
+                      );
+                    },
                   ),
                 );
               }

@@ -3,23 +3,21 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
-import 'package:flutterfire_ui/auth.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:uuid/uuid.dart';
 
-class ChatPage extends ConsumerStatefulWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage(
       {required this.name,
-      required this.ideaContent,
-      required this.ideaTitle,
+      this.ideaContent,
+      this.ideaTitle,
       required this.largeCategory,
       required this.smallCategory,
       Key? key})
       : super(key: key);
 
   final String name;
-  final String ideaContent;
-  final String ideaTitle;
+  final String? ideaContent;
+  final String? ideaTitle;
   final String largeCategory;
   final String smallCategory;
 
@@ -27,21 +25,22 @@ class ChatPage extends ConsumerStatefulWidget {
   _ChatPageState createState() => _ChatPageState();
 }
 
-class _ChatPageState extends ConsumerState<ChatPage> {
+class _ChatPageState extends State<ChatPage> {
   List<types.Message> _messages = [];
   String randomId = Uuid().v4();
   // final _user = const types.User(id: '06c33e8b-e835-4736-80f4-63f44b66666c');
-
+  @override
   void initState() {
     super.initState();
-    // ref.watch(chatRoomRepositoryProvider).retrieveCustomMessageList(
-    //     largeCategoryName: widget.largeCategoryName,
-    //     smallCategoryName: widget.smallCategoryName,
-    //     title: widget.title);
     getData();
   }
 
-  void getData() async {
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  Future<void> getData() async {
     final getData = await FirebaseFirestore.instance
         .collection("largeCategory")
         .doc(widget.largeCategory)
@@ -49,7 +48,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
         .doc(widget.smallCategory)
         .collection("chat_room")
         .doc(widget.ideaTitle)
-        .collection("messageList")
+        .collection("messageList").orderBy("createdAt", descending: true)
         .get();
 
     final message = getData.docs
@@ -61,14 +60,18 @@ class _ChatPageState extends ConsumerState<ChatPage> {
             text: d.data()['text']))
         .toList();
 
-    setState(() {
-      _messages = [...message];
-    });
+    if (mounted) {
+      setState(() {
+        _messages = [...message];
+      });
+    }
   }
 
-  void _addMessage(types.TextMessage message) async {
+  Future<void> _addMessage(types.TextMessage message) async {
     setState(() {
       _messages.insert(0, message);
+      // print(_messages);
+      // print(widget.ideaTitle);
     });
     await FirebaseFirestore.instance
         .collection("largeCategory")
@@ -85,6 +88,7 @@ class _ChatPageState extends ConsumerState<ChatPage> {
       'id': message.id,
       'text': message.text,
     });
+    await Future.delayed(Duration(seconds: 3));
   }
 
   void _handlePreviewDataFetched(
@@ -116,16 +120,43 @@ class _ChatPageState extends ConsumerState<ChatPage> {
         title: Text('チャット'),
         actions: <Widget>[
           IconButton(
-              icon: Icon(Icons.logout),
-              onPressed: () async {
-                await FirebaseAuth.instance.signOut();
-                await Navigator.of(context)
-                    .pushReplacement(MaterialPageRoute(builder: (context) {
-                  return SignInScreen();
-                }));
-              })
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("チャットを閉じますか？"),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("いいえ")),
+                        ElevatedButton(
+                          child: Text(
+                            "はい",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () async {
+                              await FirebaseFirestore.instance
+                                .collection("largeCategory")
+                                .doc(widget.largeCategory)
+                                .collection("smallCategory")
+                                .doc(widget.smallCategory)
+                                .collection("chat_room")
+                                .doc(widget.ideaTitle)
+                                .update({"isSolved" : true});
+                          },
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: Icon(Icons.check))
         ],
       ),
+      //  isLoading flag 三項演算子
       body: Chat(
         theme: const DefaultChatTheme(
           inputBackgroundColor: Colors.blue,
@@ -135,14 +166,14 @@ class _ChatPageState extends ConsumerState<ChatPage> {
         showUserNames: true,
         messages: _messages,
         onPreviewDataFetched: _handlePreviewDataFetched,
-        onSendPressed: (types.PartialText message) {
+        onSendPressed: (types.PartialText message) async {
           final textMessage = types.TextMessage(
             author: _uid,
             createdAt: DateTime.now().millisecondsSinceEpoch,
             id: randomId,
             text: message.text,
           );
-          _addMessage(textMessage);
+          await _addMessage(textMessage);
         },
         user: _uid,
       ),

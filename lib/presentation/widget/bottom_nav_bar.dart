@@ -11,7 +11,7 @@ class BottomNavBar extends HookConsumerWidget {
   final Map<String, IconData> bottomContentList = {
     "ホーム": Icons.home,
     "発案": Icons.add,
-    "解決": Icons.light,
+    "解決": Icons.lightbulb,
     "トーク": Icons.person,
   };
 
@@ -22,20 +22,19 @@ class BottomNavBar extends HookConsumerWidget {
     final bottomNavBarSelectedIndexNotifier =
         ref.watch(bottomNavBarSelectedIndexProvider.notifier);
     return BottomNavyBar(
-      backgroundColor: Colors.blue[100],
+      // backgroundColor: Colors.blue[100],
       items: [
         for (int i = 0; i < bottomContentList.length; i++) ...{
           BottomNavyBarItem(
-            title: Text(
-              // style: TextStyle(color: Theme.of(context).colorScheme.primary),
-              bottomContentList.keys.toList()[i],
-            ),
-            icon: Icon(
-              bottomContentList.values.toList()[i],
-              // color: Theme.of(context).colorScheme.primary
-            ),
-            activeColor: Theme.of(context).colorScheme.primary,
-            inactiveColor: Theme.of(context).colorScheme.inversePrimary,
+              title: Text(
+                // style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                bottomContentList.keys.toList()[i],
+              ),
+              icon: Icon(bottomContentList.values.toList()[i],
+                  // color: Theme.of(context).colorScheme.primary
+              ),
+              activeColor: Theme.of(context).colorScheme.primary,
+            inactiveColor: Theme.of(context).colorScheme.primary,
           ),
         }
       ],

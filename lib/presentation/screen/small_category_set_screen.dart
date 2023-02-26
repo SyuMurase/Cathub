@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_demo_firebase/presentation/widget/small_category_card.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -9,15 +6,15 @@ import '../../domain/repository/chat_room_repository.dart';
 
 class SmallCategorySetScreen extends HookConsumerWidget {
   const SmallCategorySetScreen(
-      {required this.ideaContent,
-      required this.ideaTitle,
+      { this.ideaContent,
+       this.ideaTitle,
       required this.largeCategory,
       // required this.smallCategory,
       Key? key})
       : super(key: key);
 
-  final String ideaContent;
-  final String ideaTitle;
+  final String? ideaContent;
+  final String? ideaTitle;
   final String largeCategory;
   // final String smallCategory;
 
@@ -34,7 +31,7 @@ class SmallCategorySetScreen extends HookConsumerWidget {
           builder: (BuildContext context,
               AsyncSnapshot<List<String>> smallCategoryList) {
             if (smallCategoryList.connectionState != ConnectionState.done) {
-              return Center(child: Text("エラーが発生しています"));
+              return Center(child: CircularProgressIndicator());
             }
             if (smallCategoryList.hasError) {
               return Text(smallCategoryList.error.toString());
@@ -45,21 +42,19 @@ class SmallCategorySetScreen extends HookConsumerWidget {
                   child: Text("カテゴリがありません"),
                 );
               } else {
-                return Center(
-                  child: SingleChildScrollView(
-                    child: ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: smallCategoryList.data!.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return SmallCategoryCard(
-                          ideaContent: ideaContent,
-                          ideaTitle: ideaTitle,
-                          largeCategory: largeCategory,
-                          smallCategory: smallCategoryList.data![index],
-                        );
-                      },
-                    ),
+                return SingleChildScrollView(
+                  child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: smallCategoryList.data!.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return SmallCategoryCard(
+                        ideaContent: ideaContent,
+                        ideaTitle: ideaTitle,
+                        largeCategory: largeCategory,
+                        smallCategory: smallCategoryList.data![index],
+                      );
+                    },
                   ),
                 );
               }

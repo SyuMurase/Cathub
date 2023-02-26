@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/presentation/screen/home_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/intro_slider_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/roomList_page.dart';
 import 'package:flutterfire_ui/auth.dart';
 
@@ -18,40 +19,42 @@ class AuthGate extends StatelessWidget {
       builder: (context, snapshot) {
         // User is not signed in
         if (!snapshot.hasData) {
-          return SignInScreen(
-            // headerBuilder: (context, constraints, _) {
-            //   return Padding(
-            //     padding: const EdgeInsets.all(20),
-            //     child: AspectRatio(
-            //       aspectRatio: 1,
-            //       child: Image.network(
-            //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
-            //     ),
-            //   );
-            // },
-            footerBuilder: (context, _) {
-              return const Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text(
-                  'By signing in, you agree to our terms and conditions.',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              );
-            },
-            providerConfigs: [
-              EmailProviderConfiguration(),
-              GoogleProviderConfiguration(clientId: ''),
-              AppleProviderConfiguration(),
-              FacebookProviderConfiguration(
-                clientId: '...',
-              )
-            ],
-          );
+          return IntroSliderScreen();
+          // return SignInScreen(
+          //   // headerBuilder: (context, constraints, _) {
+          //   //   return Padding(
+          //   //     padding: const EdgeInsets.all(20),
+          //   //     child: AspectRatio(
+          //   //       aspectRatio: 1,
+          //   //       child: Image.network(
+          //   //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
+          //   //     ),
+          //   //   );
+          //   // },
+          //   footerBuilder: (context, _) {
+          //     return const Padding(
+          //       padding: EdgeInsets.only(top: 16),
+          //       child: Text(
+          //         'By signing in, you agree to our terms and conditions.',
+          //         style: TextStyle(color: Colors.grey),
+          //       ),
+          //     );
+          //   },
+          //   providerConfigs: [
+          //     EmailProviderConfiguration(),
+          //     GoogleProviderConfiguration(clientId: ''),
+          //     AppleProviderConfiguration(),
+          //     FacebookProviderConfiguration(
+          //       clientId: '...',
+          //     )
+          //   ],
+          // );
         }
 
         // Render your application if authenticated
         // return RoomListPage();
-        return RoomListPage();
+        // return RoomListPage();
+        return HomeScreen();
       },
     );
   }

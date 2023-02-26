@@ -12,13 +12,14 @@ abstract class CustomMessage implements _$CustomMessage {
 
   const factory CustomMessage({
     String? id,
-    required String sendUserId,
-    required String content,
-    required DateTime sendAt,
+    required String name,
+    required String text,
+    required String uid,
+    required DateTime createdAt,
   }) = _CustomMessage;
 
   factory CustomMessage.empty() =>
-      CustomMessage(sendUserId: "", content: "", sendAt: DateTime.now());
+      CustomMessage(name: "", text: "", uid: "", createdAt: DateTime.now());
 
   factory CustomMessage.fromJson(json) => _$CustomMessageFromJson(json);
 
