@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo_firebase/authGate.dart';
 import 'package:flutter_demo_firebase/presentation/screen/idea_list_screen.dart';
+import 'package:flutter_demo_firebase/presentation/widget/Intro_slider.dart';
 import 'package:flutterfire_ui/i10n.dart';
 import 'L10n/flutter_fire_ui_localization_labels.dart';
 import 'presentation/screen/chat_page.dart';
@@ -10,7 +11,7 @@ import 'presentation/screen/idea_content_screen.dart';
 import 'presentation/screen/make_idea_screen.dart';
 import 'presentation/screen/roomList_page.dart';
 import 'presentation/screen/sample.dart';
-import 'presentation/screen/search_bar.dart';
+// import 'presentation/screen/search_bar.dart';
 import 'presentation/screen/search_largetittle.dart';
 import 'presentation/screen/setting/setting_screen.dart';
 import 'presentation/screen/solved_idea_list_screen.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
         FlutterFireUILocalizations.delegate,
       ],
       // home: AuthGate(),
-      home: HomeScreen(),
+      home: IntroSliderScreen(),
       // home: CustomDialog(),
     );
   }

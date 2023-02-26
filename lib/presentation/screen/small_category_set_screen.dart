@@ -52,10 +52,13 @@ class SmallCategorySetScreen extends HookConsumerWidget {
                       shrinkWrap: true,
                       itemCount: smallCategoryList.data!.length,
                       itemBuilder: (BuildContext context, int index) {
+                        print(ideaContent);
+                        
+                        // print(ideaContent);
                         return SmallCategoryCard(
                           ideaContent: ideaContent,
                           ideaTitle: ideaTitle,
-                          largeCategory: largeCategory,
+                          largeCategory: ideaTitle,
                           smallCategory: smallCategoryList.data![index],
                         );
                       },
