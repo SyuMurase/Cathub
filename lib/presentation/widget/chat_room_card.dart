@@ -27,14 +27,12 @@ class ChatRoomCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
-                child: Flexible(
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    child: Text(
-                      chatRoom.content,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  child: Text(
+                    chatRoom.content,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                 ),
               ),

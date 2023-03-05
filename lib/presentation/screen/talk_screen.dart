@@ -12,6 +12,7 @@ class TalkScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("発案一覧"),
       ),
       body: FutureBuilder(

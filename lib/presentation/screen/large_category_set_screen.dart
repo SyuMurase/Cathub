@@ -15,6 +15,7 @@ class LargeCategorySetScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("カテゴリ設定"),
       ),
       body: FutureBuilder(

@@ -17,6 +17,7 @@ class IdeaContentScreen extends HookConsumerWidget {
     final ideaContentController = ref.watch(ideaContentControllerProvider);
     return Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: Text('あなたの発案'),
         ),
         body: Center(
@@ -28,7 +29,7 @@ class IdeaContentScreen extends HookConsumerWidget {
                 Lottie.asset("assets/lf30_editor_xtyovlen.json",
                     width: 250, height: 250),
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(bottom: 30.0),
                   child: Text("あなたの発案を書き殴ってください！"),
                 ),
                 TextField(

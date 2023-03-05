@@ -13,6 +13,7 @@ class SolvedIdeaListScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text("発案の例"),
         actions: [
           IconButton(

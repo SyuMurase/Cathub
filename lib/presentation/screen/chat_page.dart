@@ -3,7 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_demo_firebase/presentation/screen/home_screen.dart';
 import 'package:flutter_demo_firebase/presentation/screen/idea_content_screen.dart';
+import 'package:flutter_demo_firebase/presentation/screen/solved_idea_list_screen.dart';
 import 'package:uuid/uuid.dart';
 
 class ChatPage extends StatefulWidget {
@@ -120,13 +122,13 @@ class _ChatPageState extends State<ChatPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('チャット'),
-        // leading: IconButton(
-        //   onPressed: () {
-        //     Navigator.push(context,
-        //         MaterialPageRoute(builder: (context) => IdeaContentScreen()));
-        //   },
-        //   icon: Icon(Icons.arrow_back_ios),
-        // ),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomeScreen()));
+          },
+          icon: Icon(Icons.arrow_back_ios),
+        ),
         actions: <Widget>[
           IconButton(
               onPressed: () {

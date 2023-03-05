@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
 import 'package:intro_slider/intro_slider.dart';
@@ -59,8 +58,7 @@ class IntroSliderScreen extends StatelessWidget {
               ]),
         ),
       ),
-      pathImage:
-          "assets/chat_hub_logo.png",
+      pathImage: "assets/chat_hub_logo.png",
       widthImage: 230,
       heightImage: 230,
       backgroundColor: Color.fromARGB(255, 29, 29, 29),
@@ -198,67 +196,67 @@ class IntroSliderScreen extends StatelessWidget {
     return TextButton(
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return SignInScreen(
-            // headerBuilder: (context, constraints, _) {
-            //   return Padding(
-            //     padding: const EdgeInsets.all(20),
-            //     child: AspectRatio(
-            //       aspectRatio: 1,
-            //       child: Image.network(
-            //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
-            //     ),
-            //   );
-            // },
-            footerBuilder: (context, _) {
-              return const Padding(
-                padding: EdgeInsets.only(top: 16),
-                child: Text(
-                  'By signing in, you agree to our terms and conditions.',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              );
-            },
-            providerConfigs: [
-              EmailProviderConfiguration(),
-              GoogleProviderConfiguration(clientId: ''),
-              AppleProviderConfiguration(),
-              FacebookProviderConfiguration(
-                clientId: '...',
-              )
-            ],
-          );}
-          )
-    );},
-                  // return SignInScreen(
-          //   // headerBuilder: (context, constraints, _) {
-          //   //   return Padding(
-          //   //     padding: const EdgeInsets.all(20),
-          //   //     child: AspectRatio(
-          //   //       aspectRatio: 1,
-          //   //       child: Image.network(
-          //   //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
-          //   //     ),
-          //   //   );
-          //   // },
-          //   footerBuilder: (context, _) {
-          //     return const Padding(
-          //       padding: EdgeInsets.only(top: 16),
-          //       child: Text(
-          //         'By signing in, you agree to our terms and conditions.',
-          //         style: TextStyle(color: Colors.grey),
-          //       ),
-          //     );
-          //   },
-          //   providerConfigs: [
-          //     EmailProviderConfiguration(),
-          //     GoogleProviderConfiguration(clientId: ''),
-          //     AppleProviderConfiguration(),
-          //     FacebookProviderConfiguration(
-          //       clientId: '...',
-          //     )
-          //   ],
-          // );))
-      
+            return SignInScreen(
+              // headerBuilder: (context, constraints, _) {
+              //   return Padding(
+              //     padding: const EdgeInsets.all(20),
+              //     child: AspectRatio(
+              //       aspectRatio: 1,
+              //       child: Image.network(
+              //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
+              //     ),
+              //   );
+              // },
+              footerBuilder: (context, _) {
+                return const Padding(
+                  padding: EdgeInsets.only(top: 16),
+                  child: Text(
+                    'By signing in, you agree to our terms and conditions.',
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                );
+              },
+              providerConfigs: [
+                EmailProviderConfiguration(),
+                GoogleProviderConfiguration(clientId: ''),
+                AppleProviderConfiguration(),
+                FacebookProviderConfiguration(
+                  clientId: '...',
+                )
+              ],
+            );
+          }));
+        },
+        // return SignInScreen(
+        //   // headerBuilder: (context, constraints, _) {
+        //   //   return Padding(
+        //   //     padding: const EdgeInsets.all(20),
+        //   //     child: AspectRatio(
+        //   //       aspectRatio: 1,
+        //   //       child: Image.network(
+        //   //           'https://firebase.flutter.dev/img/flutterfire_300x.png'),
+        //   //     ),
+        //   //   );
+        //   // },
+        //   footerBuilder: (context, _) {
+        //     return const Padding(
+        //       padding: EdgeInsets.only(top: 16),
+        //       child: Text(
+        //         'By signing in, you agree to our terms and conditions.',
+        //         style: TextStyle(color: Colors.grey),
+        //       ),
+        //     );
+        //   },
+        //   providerConfigs: [
+        //     EmailProviderConfiguration(),
+        //     GoogleProviderConfiguration(clientId: ''),
+        //     AppleProviderConfiguration(),
+        //     FacebookProviderConfiguration(
+        //       clientId: '...',
+        //     )
+        //   ],
+        // );))
+
         child: const Text("終了"));
   }
 }
